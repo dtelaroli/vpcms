@@ -1,0 +1,25 @@
+<form class="form-horizontal" action="" data-ng-submit="persist()" novalidate="novalidate">
+
+	<div class="form-group">
+		<label for="text1" class="control-label col-lg-4">Title</label>
+		<div class="col-lg-8">
+			<input type="text" placeholder="Title" class="form-control" data-ng-model="model.title" />
+		</div>
+	</div>
+	<!-- /.form-group -->
+
+	<div class="form-group">
+		<label for="autosize" class="control-label col-lg-4">Textarea With Autosize</label>
+		<div class="col-lg-8">
+			<textarea id="autosize" class="form-control" data-ng-model="model.content"></textarea>
+		</div>
+	</div>
+	<!-- /.form-group -->
+
+	<div class="form-group">
+		<div class="form-actions no-margin-bottom">
+			<button class="btn btn-primary" type="submit">Save</button>
+		</div>
+	</div>
+	<!-- /.form-group -->
+</form>
