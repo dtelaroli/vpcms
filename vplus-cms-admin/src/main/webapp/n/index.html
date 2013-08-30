@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="fragment" content="!" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VPlus CMS</title>
-<link rel="stylesheet" href="assets/css/bootstrap.css">
-<link rel="stylesheet" href="assets/css/bootstrap-responsive.css">
-<link rel="stylesheet" href="../ng-table/ng-table.css">
+<link rel="stylesheet" href="/assets/css/bootstrap.css">
+<link rel="stylesheet" href="/assets/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="/ng-table/ng-table.css">
 
 <style type="text/css">
 </style>
@@ -18,13 +19,13 @@
 			<div class="span2">
 				<ul>
 					<li>
-						<a href="#../home">Home</a>
+						<a href="/">Home</a>
 					</li>
 					<li>
-						<a href="#/content">Grid</a>
+						<a href="#!/content">Grid</a>
 					</li>
 					<li>
-						<a href="#/content/add">Add</a>
+						<a href="#!/content/add">Add</a>
 					</li>
 				</ul>
 			</div>
@@ -36,96 +37,143 @@
 	<script src="assets/jquery-1.10.2.min.js"></script>
 	<script src="assets/js/bootstrap.js"></script>
 
-	<script type="text/javascript" src="../vplus/vendor/angular/angular.js"></script>
-	<script type="text/javascript" src="../vplus/vendor/angular/angular-resource.js"></script>
-	<script type="text/javascript" src="../vplus/vendor/angular/angular-sanitize.js"></script>
-	<script type="text/javascript" src="../vplus/vendor/angular-ui/ui-utils.min.js"></script>
-	<script type="text/javascript" src="../vplus/vendor/angular-ui/bootstrap/ui-bootstrap-tpls-0.5.0.js"></script>
-	<script type="text/javascript" src="../vplus/vendor/angular-ui/ng-grid/ng-grid-2.0.7.min.js"></script>
-	<script type="text/javascript" src="../ng-table/ng-table.js"></script>
+	<script type="text/javascript" src="/vplus/vendor/angular/angular.js"></script>
+	<script type="text/javascript" src="/vplus/vendor/angular/angular-resource.js"></script>
+	<script type="text/javascript" src="/vplus/vendor/angular/angular-sanitize.js"></script>
+	<script type="text/javascript" src="/vplus/vendor/angular-ui/ui-utils.min.js"></script>
+	<script type="text/javascript" src="/vplus/vendor/angular-ui/bootstrap/ui-bootstrap-tpls-0.5.0.js"></script>
+	<script type="text/javascript" src="/vplus/vendor/angular-ui/ng-grid/ng-grid-2.0.7.min.js"></script>
+	<script type="text/javascript" src="/ng-table/ng-table.js"></script>
 
 
-	<script type="text/javascript" src="../vplus/src/VPlusNamespace.js"></script>
-	<script type="text/javascript" src="../vplus/src/VPlusConf.js"></script>
-	<script type="text/javascript" src="../vplus/src/VPlusServices.js"></script>
-	<script type="text/javascript" src="../vplus/src/VPlusCtrls.js"></script>
+	<script type="text/javascript" src="/vplus/src/VPlusNamespace.js"></script>
+	<script type="text/javascript" src="/vplus/src/VPlusConf.js"></script>
+	<script type="text/javascript" src="/vplus/src/VPlusServices.js"></script>
+	<script type="text/javascript" src="/vplus/src/VPlusCtrls.js"></script>
 	<script type="text/javascript">
-		angular.module('VPlus.Config').constant('URL', '/vplus-cms-admin/content').constant('menus', '')
+		angular.module('VPlus.Config').constant('URL',
+				'/vplus-cms-admin/content').constant('menus', '')
 
-		.config([ '$routeProvider', function($routeProvider) {
-			$routeProvider
-			.when('/', { templateUrl: '../home.html' })
-			.when('/content', {
-				templateUrl : 'content-grid.html',
-				controller : 'ContentGridCtrl'
-			})
-			.when('/content/add', {
-				templateUrl : 'content-form.html',
-				controller : 'ContentFormCtrl'
-			})
-			.when('/content/:id', {
-				templateUrl : 'content-form.html',
-				controller : 'ContentFormCtrl'
-			})
-			.otherwise({
-				redirectTo : '/'
-			});
-		} ]);
+		.config(
+				[ '$routeProvider', '$locationProvider',
+						function($routeProvider, $locationProvider) {
+							$routeProvider.when('/', {
+								templateUrl : 'home.html'
+							}).when('/content', {
+								templateUrl : 'content-grid.html',
+								controller : 'ContentGridCtrl'
+							}).when('/content/add', {
+								templateUrl : 'content-form.html',
+								controller : 'ContentAddCtrl'
+							}).when('/content/:id', {
+								templateUrl : 'content-form.html',
+								controller : 'ContentEditCtrl'
+							}).when('/content/:id/remove', {
+								templateUrl : 'content-grid.html',
+								controller : 'ContentDeleteCtrl'
+							}).otherwise({
+								redirectTo : '/'
+							});
 
-		angular.module('VPlus')
-			.controller('ContentGridCtrl', ['$scope', '$filter', 'Rest', 'ngTableParams',
-				function($scope, $filter, Rest, Table) {
+							$locationProvider.html5Mode(false).hashPrefix('!');
+						} ]);
 
-					$scope.tableParams = {};
-					
-					Rest.query(function(data) {
-						$scope.list = data;
-						$scope.tableParams = new Table({
-							page : 1,
-							total : data.length,
-							count : 10
-						})
-					});
-					
-					$scope.$watch('tableParams', function(params) {
-						var orderedData = params.filter ? $filter('filter')($scope.list, params.filter) : $scope.list;
-						orderedData = params.sorting ? $filter('orderBy')(orderedData, params.orderBy()) : orderedData;
-						
-						if(typeof orderedData != 'undefined') {
-							params.total = orderedData.length;
-	
-							$scope.items = orderedData.slice(
-									(params.page - 1) * params.count,
-									params.page * params.count);
-						}
-					}, true);
-					
+		angular.module('VPlus').controller(
+				'ContentGridCtrl',
+				[
+						'$scope',
+						'$filter',
+						'Rest',
+						'ngTableParams',
+						'$dialog',
+						function($scope, $filter, Rest, Table, $dialog) {
 
-				} ])
-				.controller('ContentFormCtrl', ['$scope', 'Rest', '$routeParams',
-				function($scope, Rest, $routeParams) {
-					
-					if($routeParams.id == null) {
-						$scope.model = new Rest();
-					}
-					else {
-						Rest.get({id: $routeParams.id}, function(result) {
-							$scope.model = result;
-						});
-					}
-					
-					$scope.persist = function() {
-				    	if($scope.model.id == null) {
-				    		$scope.model.$save();
-				    	}
-				    	else {
-				     		$scope.model.$update({ id: $scope.model.id });
-				    	}
-				    }
+							$scope.tableParams = {};
 
-				} ])
-				;
-		
+							Rest.query(function(data) {
+								$scope.list = data;
+								$scope.tableParams = new Table({
+									page : 1,
+									total : data.length,
+									count : 10
+								})
+							});
+
+							$scope.$watch('tableParams', function(params) {
+								var orderedData = params.filter ? $filter(
+										'filter')($scope.list, params.filter)
+										: $scope.list;
+								orderedData = params.sorting ? $filter(
+										'orderBy')(orderedData,
+										params.orderBy()) : orderedData;
+
+								if (typeof orderedData != 'undefined') {
+									params.total = orderedData.length;
+
+									$scope.items = orderedData.slice(
+											(params.page - 1) * params.count,
+											params.page * params.count);
+								}
+							}, true);
+
+						} ]).controller(
+				'ContentAddCtrl',
+				[ '$scope', 'Rest', '$routeParams',
+						function($scope, Rest, $routeParams) {
+
+							$scope.model = new Rest();
+							$scope.persist = function() {
+								$scope.model.$save();
+							}
+
+						} ]).controller(
+				'ContentEditCtrl',
+				[ '$scope', 'Rest', '$routeParams',
+						function($scope, Rest, $routeParams) {
+
+							Rest.get({
+								id : $routeParams.id
+							}, function(result) {
+								$scope.model = result;
+							});
+
+							$scope.persist = function() {
+								$scope.model.$update({
+									id : $scope.model.id
+								});
+							}
+
+						} ])
+				.controller(
+						'ContentDeleteCtrl',
+						[
+								'$scope',
+								'Rest',
+								'$dialog',
+								'$routeParams',
+								'$location',
+								function($scope, Rest, $dialog, $routeParams,
+										$location) {
+									var msgbox = $dialog.messageBox(
+											'Delete Item', 'Are you sure?', [ {
+												label : 'Yes, I\'m sure',
+												result : true
+											}, {
+												label : 'Nope',
+												result : false
+											} ]);
+									msgbox.open().then(function(result) {
+										if (result) {
+											Rest.remove({
+												id : $routeParams.id
+											}, function() {
+												$location.path('/content');
+											})
+										} else {
+											$location.path('/content');
+										}
+									});
+								} ]);
 	</script>
 </body>
 </html>
