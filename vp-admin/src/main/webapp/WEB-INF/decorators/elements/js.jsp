@@ -1,4 +1,5 @@
 <vp:js file="/n/assets/jquery-1.10.2.min.js"/>
+<vp:js file="/n/ckeditor/ckeditor.js"/>
 <vp:js file="/n/assets/js/bootstrap.js"/>
 
 <vp:js file="/n/vplus/vendor/angular/angular.js"/>

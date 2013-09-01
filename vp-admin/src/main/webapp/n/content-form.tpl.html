@@ -1,17 +1,17 @@
 <form class="form-horizontal" action="" data-ng-submit="persist()" novalidate="novalidate">
 
 	<div class="form-group">
-		<label for="text1" class="control-label col-lg-4">Title</label>
+		<label for="title" class="control-label col-lg-4">Title</label>
 		<div class="col-lg-8">
-			<input type="text" placeholder="Title" class="form-control" data-ng-model="model.title" />
+			<input id="title" type="text" placeholder="Title" class="form-control" data-ng-model="model.title" />
 		</div>
 	</div>
 	<!-- /.form-group -->
 
 	<div class="form-group">
-		<label for="autosize" class="control-label col-lg-4">Textarea With Autosize</label>
+		<label for="content" class="control-label col-lg-4">Content</label>
 		<div class="col-lg-8">
-			<textarea id="autosize" class="form-control" data-ng-model="model.content"></textarea>
+			<textarea id="content" ck-editor data-ng-model="model.content" class="form-control"></textarea>
 		</div>
 	</div>
 	<!-- /.form-group -->

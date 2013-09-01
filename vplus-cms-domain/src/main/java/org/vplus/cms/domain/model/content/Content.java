@@ -2,6 +2,7 @@ package org.vplus.cms.domain.model.content;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.vplus.cms.domain.model.author.AuthorContent;
 import org.vplus.cms.domain.model.categorization.Category;
@@ -25,7 +27,7 @@ public class Content extends ModelPlus {
 	@Size(max = 150)
 	private String title;
 
-	@Lob
+	@Type(type = "text")
 	@NotEmpty
 	private String content;
 

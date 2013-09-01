@@ -27,29 +27,30 @@ angular.module('VPlus.Config').constant('URL', '/vp-admin/content').constant(
 					$locationProvider.html5Mode(false).hashPrefix('!');
 				} ]);
 
-angular.module('VPlus').controller(
-		'ContentGridCtrl',
-		[
-				'$scope',
-				'$filter',
-				'Rest',
-				'ngTableParams',
-				'$dialog',
-				function($scope, $filter, Rest, Table, $dialog) {
+angular
+		.module('VPlus')
+		.controller(
+				'ContentGridCtrl',
+				[
+						'$scope',
+						'$filter',
+						'Rest',
+						'ngTableParams',
+						'$dialog',
+						function($scope, $filter, Rest, Table, $dialog) {
 
-					$scope.tableParams = {};
+							$scope.tableParams = {};
 
-					Rest.query(function(data) {
-						$scope.list = data;
-						$scope.tableParams = new Table({
-							page : 1,
-							total : data.length,
-							count : 10
-						});
-					});
+							Rest.query(function(data) {
+								$scope.list = data;
+								$scope.tableParams = new Table({
+									page : 1,
+									total : data.length,
+									count : 10
+								});
+							});
 
-					$scope.$watch('tableParams',
-							function(params) {
+							$scope.$watch('tableParams', function(params) {
 								var orderedData = params.filter ? $filter(
 										'filter')($scope.list, params.filter)
 										: $scope.list;
@@ -66,59 +67,87 @@ angular.module('VPlus').controller(
 								}
 							}, true);
 
-				} ]).controller(
-		'ContentAddCtrl',
-		[ '$scope', 'Rest', '$routeParams',
-				function($scope, Rest, $routeParams) {
+						} ])
+		.controller(
+				'ContentAddCtrl',
+				[ '$scope', 'Rest', '$routeParams',
+						function($scope, Rest, $routeParams) {
 
-					$scope.model = new Rest();
-					$scope.persist = function() {
-						$scope.model.$save();
-					}
+							$scope.model = new Rest();
+							$scope.persist = function() {
+								$scope.model.$save();
+							};
 
-				} ]).controller(
-		'ContentEditCtrl',
-		[ '$scope', 'Rest', '$routeParams',
-				function($scope, Rest, $routeParams) {
+						} ])
+		.controller(
+				'ContentEditCtrl',
+				[ '$scope', 'Rest', '$routeParams',
+						function($scope, Rest, $routeParams) {
 
-					Rest.get({
-						id : $routeParams.id
-					}, function(result) {
-						$scope.model = result;
-					});
-
-					$scope.persist = function() {
-						$scope.model.$update({
-							id : $scope.model.id
-						});
-					}
-
-				} ]).controller(
-		'ContentDeleteCtrl',
-		[
-				'$scope',
-				'Rest',
-				'$dialog',
-				'$routeParams',
-				'$location',
-				function($scope, Rest, $dialog, $routeParams, $location) {
-					var msgbox = $dialog.messageBox('Delete Item',
-							'Are you sure?', [ {
-								label : 'Yes, I\'m sure',
-								result : true
-							}, {
-								label : 'Nope',
-								result : false
-							} ]);
-					msgbox.open().then(function(result) {
-						if (result) {
-							Rest.remove({
+							Rest.get({
 								id : $routeParams.id
-							}, function() {
-								$location.path('/content');
-							})
-						} else {
-							$location.path('/content');
+							}, function(result) {
+								$scope.model = result;
+							});
+
+							$scope.persist = function() {
+								$scope.model.$update({
+									id : $scope.model.id
+								});
+							};
+
+						} ])
+		.controller(
+				'ContentDeleteCtrl',
+				[
+						'$scope',
+						'Rest',
+						'$dialog',
+						'$routeParams',
+						'$location',
+						function($scope, Rest, $dialog, $routeParams, $location) {
+							var msgbox = $dialog.messageBox('Delete Item',
+									'Are you sure?', [ {
+										label : 'Yes, I\'m sure',
+										result : true
+									}, {
+										label : 'Nope',
+										result : false
+									} ]);
+							msgbox.open().then(function(result) {
+								if (result) {
+									Rest.remove({
+										id : $routeParams.id
+									}, function() {
+										$location.path('/content');
+									});
+								} else {
+									$location.path('/content');
+								}
+							});
+						} ]).directive('ckEditor',
+				[ function() {
+					return {
+						require : '^?ngModel',
+						link : function($scope, elm, attr, ngModel) {
+
+							var ck = CKEDITOR.replace(elm[0]);
+							
+							ck.on('instanceReady', function() {
+								ck.setData(ngModel.$viewValue);
+							});
+							
+							ck.on('pasteState', function() {
+								$scope.$apply(function() {
+									ngModel.$setViewValue(ck.getData());
+								});
+							});
+							
+							ngModel.$render = function(value) {
+								ck.setData(ngModel.$modelValue);
+							};
 						}
-					});
+					};
 				} ]);
+
+;
