@@ -11,10 +11,6 @@
 	<artifactId>vp-admin</artifactId>
 	<packaging>war</packaging>
 	
-	<properties>
-		<version.hibernate>4.2.3.Final</version.hibernate>
-	</properties>
-
 	<name>vp-admin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 

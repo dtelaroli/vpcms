@@ -128,7 +128,7 @@ angular
 						} ]).directive('ckEditor',
 				[ function() {
 					return {
-						require : '^?ngModel',
+						require : '?ngModel',
 						link : function($scope, elm, attr, ngModel) {
 
 							var ck = CKEDITOR.replace(elm[0]);

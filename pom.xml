@@ -17,15 +17,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.vplus</groupId>
-			<artifactId>vplus-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 	</dependencies>
 
 	<modules>
 		<module>vplus-cms-domain</module>
 		<module>vp-admin</module>
+		<module>vp-blog</module>
 	</modules>
 
 	<properties>

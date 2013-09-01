@@ -1,0 +1,10 @@
+<table ng-table="tableParams" class="table" show-filter="true">
+	<tr ng-repeat="item in items">
+		<td data-title="'Title'" sortable="title" filter="{'title':'text'}">{{item.title}}</td>
+		<td data-title="'Status'" sortable="status" filter="{'action':'button'}">{{item.status}}</td>
+		<td data-title="'Actions'">
+			<a href="#!/content/{{item.id}}" class="btn btn-primaryd">Edit</a>
+			<a href="#!/content/{{item.id}}/remove" class="btn btn-primary">Delete</a>
+		</td>
+	</tr>
+</table>
