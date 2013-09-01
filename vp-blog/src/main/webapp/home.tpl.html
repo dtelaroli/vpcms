@@ -1,0 +1,20 @@
+<h1>Blog Posts</h1>
+<div data-ng-repeat="item in list">
+	<hr />
+	<h2>{{item.title}}</h2>
+	<div data-ng-bind-html-unsafe="item.content"></div>
+	<div class="row">
+		<div class="pull-right">
+			<a href="#!/{{item.id}}">Read more...</a>
+		</div>
+	</div>
+	<div>
+		<span class="badge badge-success">Posted {{item.modified.time | date}}</span>
+		<div class="pull-right">
+			<span class="label">alice</span>
+			<span class="label">story</span>
+			<span class="label">blog</span>
+			<span class="label">personal</span>
+		</div>
+	</div>
+</div>
