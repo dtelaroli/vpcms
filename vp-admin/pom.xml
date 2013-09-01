@@ -10,16 +10,11 @@
 	</parent>
 	<artifactId>vp-admin</artifactId>
 	<packaging>war</packaging>
-	
+
 	<name>vp-admin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
-		<dependency>
-			<groupId>br.com.caelum</groupId>
-			<artifactId>vraptor</artifactId>
-			<version>3.5.2-SNAPSHOT</version>
-		</dependency>
 		<dependency>
 			<groupId>org.vplus</groupId>
 			<artifactId>vplus-cms-domain</artifactId>
@@ -31,6 +26,24 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
+		
+		<dependency>
+			<groupId>br.com.caelum</groupId>
+			<artifactId>vraptor</artifactId>
+			<version>3.5.2-SNAPSHOT</version>
+			<classifier>no-beans-xml</classifier>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.0.Final</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -47,15 +60,10 @@
 			<version>1.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>opensymphony</groupId>
-			<artifactId>sitemesh</artifactId>
-			<version>2.4.2</version>
-		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>vplus-cms-admin</finalName>
+		<finalName>vp-admin</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.jboss.as.plugins</groupId>
@@ -65,6 +73,43 @@
 					<hostname>192.241.194.159</hostname>
 					<username>denilson</username>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>static-scanning</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<path id="build.classpath">
+									<fileset
+										dir="${project.build.directory}/${project.build.finalName}/WEB-INF/lib"
+										includes="*.jar" />
+								</path>
+								<java classpathref="build.classpath"
+									classname="br.com.caelum.vraptor.scan.VRaptorStaticScanning"
+									fork="true">
+									<arg
+										value="${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml" />
+									<classpath refid="build.classpath" />
+									<classpath
+										path="${project.build.directory}/${project.build.finalName}/WEB-INF/classes" />
+								</java>
+								<war destfile="${project.build.directory}/${project.build.finalName}.war"
+									webxml="${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml">
+									<fileset
+										dir="${project.build.directory}/${project.build.finalName}" />
+								</war>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
