@@ -13,51 +13,31 @@
 
 	<name>vp-admin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.vplus</groupId>
 			<artifactId>vplus-cms-domain</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.vplus</groupId>
-			<artifactId>vplus-front</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>war</type>
-		</dependency>
-		
-		<dependency>
-			<groupId>br.com.caelum</groupId>
-			<artifactId>vraptor</artifactId>
-			<version>3.5.2-SNAPSHOT</version>
-			<classifier>no-beans-xml</classifier>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.0.0.Final</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
 			<version>1.2.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
@@ -66,12 +46,36 @@
 		<finalName>vp-admin</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<configuration>
+					<scanIntervalSeconds>3</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/vp-admin</contextPath>
+					</webApp>
+					<systemProperties>                        
+                        <systemProperty>
+                            <name>jetty.port</name>
+                            <value>8082</value>
+                        </systemProperty>                        
+                    </systemProperties>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.jboss.as.plugins</groupId>
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.4.Final</version>
 				<configuration>
 					<hostname>192.241.194.159</hostname>
 					<username>denilson</username>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
 			<plugin>
