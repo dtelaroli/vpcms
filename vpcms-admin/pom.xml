@@ -13,7 +13,7 @@
 
 	<name>vp-admin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.dtelaroli.vpcms</groupId>
@@ -25,7 +25,7 @@
 			<artifactId>vplus-tags</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -36,6 +36,11 @@
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
 			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>opensymphony</groupId>
@@ -55,12 +60,12 @@
 					<webApp>
 						<contextPath>/vp-admin</contextPath>
 					</webApp>
-					<systemProperties>                        
-                        <systemProperty>
-                            <name>jetty.port</name>
-                            <value>8082</value>
-                        </systemProperty>                        
-                    </systemProperties>
+					<systemProperties>
+						<systemProperty>
+							<name>jetty.port</name>
+							<value>8082</value>
+						</systemProperty>
+					</systemProperties>
 				</configuration>
 			</plugin>
 			<plugin>
