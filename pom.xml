@@ -9,19 +9,11 @@
 	<name>vplus-blog Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
 	<modules>
 		<module>vpcms-domain</module>
 		<module>vpcms-admin</module>
 		<module>vpcms-blog</module>
+		<module>vpcms-ear</module>
 	</modules>
 
 	<properties>

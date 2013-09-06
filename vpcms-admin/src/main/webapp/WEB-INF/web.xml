@@ -44,6 +44,6 @@
 	</context-param>
 	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>
-		<param-value>org.dtelaroli.vplus,br.com.caelum.vraptor.deserialization.gson,br.com.caelum.vraptor.serialization.gson,org.vplus.core,br.com.caelum.vraptor.util.jpa</param-value>
+		<param-value>org.dtelaroli.vplus,br.com.caelum.vraptor.deserialization.gson,br.com.caelum.vraptor.serialization.gson</param-value>
 	</context-param>
 </web-app>

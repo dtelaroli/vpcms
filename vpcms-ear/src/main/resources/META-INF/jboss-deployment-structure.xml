@@ -1,0 +1,20 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.1">
+<deployment>
+    <exclusions>
+        <module name="javax.validation.api"/>
+        <module name="org.hibernate.validator"/>
+    </exclusions>
+</deployment>
+<sub-deployment name="vpcms-admin">
+    <exclusions>
+        <module name="javax.validation.api"/>
+        <module name="org.hibernate.validator"/>
+    </exclusions>
+</sub-deployment>
+<sub-deployment name="vpcms-blog">
+    <exclusions>
+        <module name="javax.validation.api"/>
+        <module name="org.hibernate.validator"/>
+    </exclusions>
+</sub-deployment>
+</jboss-deployment-structure>
