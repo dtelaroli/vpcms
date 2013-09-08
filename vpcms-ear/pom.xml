@@ -71,7 +71,7 @@
 					<adminPassword>${password}</adminPassword>
 					<domain>
 						<name>domain1</name>
-						<host>dtelaroli.org</host>
+						<host>localhost</host>
 						<adminPort>4848</adminPort>
 					</domain>
 					<components>
@@ -85,7 +85,7 @@
 					<execution>
 						<phase>install</phase>
 						<goals>
-							<goal>redeploy</goal>
+							<goal>deploy</goal>
 						</goals>
 					</execution>
 				</executions>
