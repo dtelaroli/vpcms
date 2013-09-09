@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('VPlus.Config').constant('URL', '/vp-admin/content').constant(
+angular.module('VPlus.Config').constant('URL', '/vp-admin/api/v1/content').constant(
 		'menus', '')
 
 .config(
@@ -41,4 +41,3 @@ angular.module('VPlus').controller(
 
 				} ]);
 
-;

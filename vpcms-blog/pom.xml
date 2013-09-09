@@ -9,8 +9,9 @@
   </parent>
   <artifactId>vpcms-blog</artifactId>
   <packaging>war</packaging>
-  <name>vp-blog Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <name>VPlus Blog Frontend</name>
+  <url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-admin</url>
+  
   <build>
     <finalName>vp-blog</finalName>
   </build>
