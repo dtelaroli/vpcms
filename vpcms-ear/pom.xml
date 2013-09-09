@@ -35,6 +35,12 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
+		<dependency>
+			<groupId>org.dtelaroli.vplus</groupId>
+			<artifactId>vplus-static</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -55,6 +61,12 @@
 							<artifactId>vpcms-blog</artifactId>
 							<bundleFileName>vpcms-blog.war</bundleFileName>
 							<contextRoot>/vp-blog</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>org.dtelaroli.vpcms</groupId>
+							<artifactId>vplus-static</artifactId>
+							<bundleFileName>vp-static.war</bundleFileName>
+							<contextRoot>/vp-static</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>
