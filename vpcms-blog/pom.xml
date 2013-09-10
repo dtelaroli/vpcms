@@ -9,8 +9,8 @@
   </parent>
   <artifactId>vpcms-blog</artifactId>
   <packaging>war</packaging>
-  <name>VPlus Blog Frontend</name>
-  <url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-admin</url>
+  <name>VPlus Blog</name>
+  <url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-blog</url>
   
   <build>
     <finalName>vp-blog</finalName>

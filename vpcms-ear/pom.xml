@@ -9,8 +9,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>vpcms-ear</artifactId>
-	<name>vpcms-ear</name>
-	<url>http://maven.apache.org</url>
+	<name>VPlus CMS EAR Package</name>
+	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-ear</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

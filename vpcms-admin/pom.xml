@@ -11,8 +11,8 @@
 	<artifactId>vpcms-admin</artifactId>
 	<packaging>war</packaging>
 
-	<name>VPlus CMS</name>
-	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-blog</url>
+	<name>VPlus CMS Admin</name>
+	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-admin</url>
 
 	<dependencies>
 		<dependency>

@@ -9,8 +9,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>vpcms-domain</artifactId>
-	<name>vpcms-domain</name>
-	<url>http://maven.apache.org</url>
+	<name>VPlus CMS Domain</name>
+	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-domain</url>
 
 
 	<dependencies>

@@ -6,8 +6,8 @@
 	<artifactId>vpcms-parent</artifactId>
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>vplus-blog Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>VPlus CMS</name>
+	<url>https://github.com/dtelaroli/vpcms</url>
 
 	<modules>
 		<module>vpcms-domain</module>
