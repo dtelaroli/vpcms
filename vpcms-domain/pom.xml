@@ -12,7 +12,6 @@
 	<name>VPlus CMS Domain</name>
 	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-domain</url>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
