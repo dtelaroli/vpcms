@@ -1,9 +1,10 @@
-<script src="/vp-static/js/ckeditor/ckeditor.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
-<script src="/vp-static/js/angular/angular.js" type="text/javascript"></script>
-<script src="/vp-static/js/angular/angular-resource.js" type="text/javascript"></script>
-<script src="/vp-static/js/angular/angular-sanitize.js" type="text/javascript"></script>
-<script src="/vp-static/js/ng-table/ng-table.src.js" type="text/javascript"></script>
+<script src="/vp-static/lib/jquery-2.0.3.min.js" type="text/javascript"></script>
+<script src="/vp-static/lib/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="/vp-static/lib/angular/angular.min.js" type="text/javascript"></script>
+<script src="/vp-static/js/vplus.min.js" type="text/javascript"></script>
 
-<script src="/vp-static/js/vplus.js" type="text/javascript"></script>
 <vp:js file="/content/main.js"/>

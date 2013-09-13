@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('VPlus.Config').constant('URL', '/vp-admin/api/v1/content').constant(
-		'menus', '')
+angular.module('myApp.controllers').constant('REST_URL',
+		'/vp-admin/api/v1/content').
 
-.config(
+config(
 		[ '$routeProvider', '$locationProvider',
 				function($routeProvider, $locationProvider) {
 					$routeProvider.when('/', {
@@ -17,27 +17,28 @@ angular.module('VPlus.Config').constant('URL', '/vp-admin/api/v1/content').const
 					});
 
 					$locationProvider.html5Mode(false).hashPrefix('!');
-				} ]);
+				} ]).
 
-angular.module('VPlus').controller(
+controller(
 		'HomeCtrl',
-		[ '$scope', '$filter', 'Rest', 'ngTableParams', '$dialog',
-				function($scope, $filter, Rest, Table, $dialog) {
+		[ '$scope', '$filter', '$restService',
+				function($scope, $filter, $rest) {
 
-					Rest.query(function(data) {
+					$rest.query(function(data) {
 						$scope.list = data;
 					});
 
-				} ]).controller(
-		'ViewCtrl',
-		[ '$scope', 'Rest', '$routeParams',
-				function($scope, Rest, $routeParams) {
+				} ]).
 
-					Rest.get({
+controller(
+		'ViewCtrl',
+		[ '$scope', '$restService', '$routeParams',
+				function($scope, $rest, $routeParams) {
+
+					$rest.get({
 						id : $routeParams.id
 					}, function(result) {
 						$scope.model = result;
 					});
 
 				} ]);
-
