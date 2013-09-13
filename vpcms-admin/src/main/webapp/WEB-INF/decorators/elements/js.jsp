@@ -7,4 +7,4 @@
 <script src="/vp-static/lib/angular/angular.min.js" type="text/javascript"></script>
 <script src="/vp-static/js/vplus.min.js" type="text/javascript"></script>
 
-<vp:js file="/content/main.js"/>
+<vp:js value="/content/main.js"/>
