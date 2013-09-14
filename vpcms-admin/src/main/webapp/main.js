@@ -2,23 +2,23 @@
 
 angular.module('myApp.controllers').
 
-constant('REST_URL', '/vp-admin/api/v1/content').
+constant('REST_URL', '/vp-api/v1/content').
 
 config(
 		[ '$routeProvider', '$locationProvider',
 				function($routeProvider, $locationProvider) {
 					$routeProvider.when('/', {
 						templateUrl : 'content-grid.tpl.html',
-						controller : 'ContentGridCtrl'
+						controller : 'GridCtrl'
 					}).when('/add', {
 						templateUrl : 'content-form.tpl.html',
-						controller : 'ContentAddCtrl'
+						controller : 'AddCtrl'
 					}).when('/:id', {
 						templateUrl : 'content-form.tpl.html',
-						controller : 'ContentEditCtrl'
+						controller : 'EditCtrl'
 					}).when('/:id/remove', {
 						templateUrl : 'content-grid.tpl.html',
-						controller : 'ContentDeleteCtrl'
+						controller : 'DeleteCtrl'
 					}).otherwise({
 						redirectTo : '/'
 					});
@@ -27,31 +27,31 @@ config(
 				} ]).
 
 controller(
-		'ContentGridCtrl',
+		'GridCtrl',
 		[
 				'$scope',
-				'$filter',
 				'$restService',
-				'ngTableParams',
+				'$filter',
 				'$dialog',
-				function($scope, $filter, $rest, Table, $dialog) {
+				'ngTableParams',
+				function($scope, $rest, $filter, $dialog, $table) {
 
-					$scope.tableParams = {};
+					$scope.$tableParams = {};
 
 					$rest.query(function(data) {
-						$scope.list = data;
-						$scope.tableParams = new Table({
+						$scope.$list = data;
+						$scope.$tableParams = new $table({
 							page : 1,
 							total : data.length,
 							count : 10
 						});
 					});
 
-					$scope.$watch('tableParams',
+					$scope.$watch('$tableParams',
 							function(params) {
 								var orderedData = params.filter ? $filter(
-										'filter')($scope.list, params.filter)
-										: $scope.list;
+										'filter')($scope.$list, params.filter)
+										: $scope.$list;
 								orderedData = params.sorting ? $filter(
 										'orderBy')(orderedData,
 										params.orderBy()) : orderedData;
@@ -59,7 +59,7 @@ controller(
 								if (typeof orderedData != 'undefined') {
 									params.total = orderedData.length;
 
-									$scope.items = orderedData.slice(
+									$scope.$items = orderedData.slice(
 											(params.page - 1) * params.count,
 											params.page * params.count);
 								}
@@ -68,38 +68,38 @@ controller(
 				} ]).
 
 controller(
-		'ContentAddCtrl',
+		'AddCtrl',
 		[ '$scope', '$restService', '$routeParams',
 				function($scope, $rest, $routeParams) {
 
-					$scope.model = new $rest();
+					$scope.$model = new $rest();
 					$scope.persist = function() {
-						$scope.model.$save();
+						$scope.$model.$save();
 					};
 
 				} ]).
 
 controller(
-		'ContentEditCtrl',
+		'EditCtrl',
 		[ '$scope', '$restService', '$routeParams',
 				function($scope, $rest, $routeParams) {
 
 					$rest.get({
 						id : $routeParams.id
 					}, function(result) {
-						$scope.model = result;
+						$scope.$model = result;
 					});
 
 					$scope.persist = function() {
-						$scope.model.$update({
-							id : $scope.model.id
+						$scope.$model.$update({
+							id : $scope.$model.id
 						});
 					};
 
 				} ]).
 
 controller(
-		'ContentDeleteCtrl',
+		'DeleteCtrl',
 		[
 				'$scope',
 				'$restService',
@@ -151,5 +151,3 @@ directive('ckEditor', [ function() {
 		}
 	};
 } ]);
-
-;

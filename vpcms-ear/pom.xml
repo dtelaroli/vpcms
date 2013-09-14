@@ -27,13 +27,19 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dtelaroli.vpcms</groupId>
-			<artifactId>vpcms-blog</artifactId>
+			<artifactId>vpcms-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.dtelaroli.vpcms</groupId>
 			<artifactId>vpcms-admin</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dtelaroli.vpcms</groupId>
+			<artifactId>vpcms-blog</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
@@ -54,15 +60,21 @@
 						</webModule>
 						<webModule>
 							<groupId>org.dtelaroli.vpcms</groupId>
-							<artifactId>vpcms-blog</artifactId>
-							<bundleFileName>vpcms-blog.war</bundleFileName>
-							<contextRoot>/vp-blog</contextRoot>
+							<artifactId>vpcms-api</artifactId>
+							<bundleFileName>vpcms-api.war</bundleFileName>
+							<contextRoot>/vp-api</contextRoot>
 						</webModule>
 						<webModule>
 							<groupId>org.dtelaroli.vpcms</groupId>
 							<artifactId>vpcms-admin</artifactId>
 							<bundleFileName>vpcms-admin.war</bundleFileName>
 							<contextRoot>/vp-admin</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>org.dtelaroli.vpcms</groupId>
+							<artifactId>vpcms-blog</artifactId>
+							<bundleFileName>vpcms-blog.war</bundleFileName>
+							<contextRoot>/vp-blog</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>

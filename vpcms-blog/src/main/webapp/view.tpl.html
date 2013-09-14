@@ -1,7 +1,7 @@
-<h2>{{model.title}}</h2>
-<div data-ng-bind-html-unsafe="model.content"></div>
+<h2>{{$model.title}}</h2>
+<div data-ng-bind-html-unsafe="$model.content"></div>
 <div>
-	<span class="badge badge-success">Posted {{model.modified.time | date}}</span>
+	<span class="badge badge-success">Posted {{$model.modified.time | date}}</span>
 	<div class="pull-right">
 		<span class="label">alice</span>
 		<span class="label">story</span>

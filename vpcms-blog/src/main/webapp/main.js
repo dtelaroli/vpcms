@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.controllers').constant('REST_URL',
-		'/vp-admin/api/v1/content').
+		'/vp-api/v1/content').
 
 config(
 		[ '$routeProvider', '$locationProvider',
@@ -21,11 +21,11 @@ config(
 
 controller(
 		'HomeCtrl',
-		[ '$scope', '$filter', '$restService',
-				function($scope, $filter, $rest) {
+		[ '$scope', '$restService',
+				function($scope, $rest) {
 
 					$rest.query(function(data) {
-						$scope.list = data;
+						$scope.$list = data;
 					});
 
 				} ]).
@@ -38,7 +38,7 @@ controller(
 					$rest.get({
 						id : $routeParams.id
 					}, function(result) {
-						$scope.model = result;
+						$scope.$model = result;
 					});
 
 				} ]);

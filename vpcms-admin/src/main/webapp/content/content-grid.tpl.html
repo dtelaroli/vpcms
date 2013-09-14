@@ -1,5 +1,5 @@
-<table ng-table="tableParams" class="table" show-filter="true">
-	<tr ng-repeat="item in items">
+<table ng-table="$tableParams" class="table" show-filter="true">
+	<tr ng-repeat="item in $items">
 		<td data-title="'Title'" sortable="title" filter="{'title':'text'}">{{item.title}}</td>
 		<td data-title="'Status'" sortable="status" filter="{'action':'button'}">{{item.status}}</td>
 		<td data-title="'Actions'">

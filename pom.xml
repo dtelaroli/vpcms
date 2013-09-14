@@ -11,6 +11,7 @@
 
 	<modules>
 		<module>vpcms-domain</module>
+		<module>vpcms-api</module>
 		<module>vpcms-admin</module>
 		<module>vpcms-blog</module>
 		<module>vpcms-ear</module>

@@ -9,7 +9,7 @@ import br.com.caelum.vraptor.ioc.Component;
 @ApplicationScoped
 public class CustomPathAnnotationRoutesParser extends PathAnnotationRoutesParser {
 
-	private static final String API_V1 = "/api/v1";
+	private static final String API_V1 = "/v1";
 
 	public CustomPathAnnotationRoutesParser(Router router) {
 		super(router);
