@@ -4,27 +4,27 @@
 <title>Content</title>
 </head>
 <body>
-	<aside>
-		<nav>
-			<div class="span2">
-				<ul>
-					<li>
-						<a href="<c:url value="/"/>">Home</a>
-					</li>
-					<li>
-						<a href="#!/">Grid</a>
-					</li>
-					<li>
-						<a href="#!/add">Add</a>
-					</li>
-				</ul>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<nav>
+					<ul>
+						<li>
+							<a href="<c:url value="/"/>">Home</a>
+						</li>
+						<li>
+							<a href="#!/">Grid</a>
+						</li>
+						<li>
+							<a href="#!/add">Add</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
-		</nav>
-	</aside>
-	<section>
-		<div class="span10">
-			<div data-ng-view></div>
+			<div class="col-md-8">
+				<div data-ng-view></div>
+			</div>
 		</div>
-	</section>
+	</div>
 </body>
 </html>

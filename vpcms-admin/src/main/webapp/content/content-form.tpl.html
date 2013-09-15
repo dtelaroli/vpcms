@@ -1,23 +1,24 @@
 <form class="form-horizontal" action="" data-ng-submit="persist()" novalidate="novalidate">
 
 	<div class="form-group">
-		<label for="title" class="control-label col-lg-4">Title</label>
-		<div class="col-lg-8">
+		<label for="title" class="control-label col-lg-2">Title</label>
+		<div class="col-lg-10">
 			<input id="title" type="text" placeholder="Title" class="form-control" data-ng-model="$model.title" />
 		</div>
 	</div>
 	<!-- /.form-group -->
 
 	<div class="form-group">
-		<label for="content" class="control-label col-lg-4">Content</label>
-		<div class="col-lg-8">
+		<label for="content" class="control-label col-lg-2">Content</label>
+		<div class="col-lg-10">
 			<textarea id="content" ck-editor data-ng-model="$model.content" class="form-control"></textarea>
 		</div>
 	</div>
 	<!-- /.form-group -->
 
 	<div class="form-group">
-		<div class="form-actions no-margin-bottom">
+		<span class="col-lg-2"></span>
+		<div class="form-actions no-margin-bottom col-lg-10">
 			<button class="btn btn-primary" type="submit">Save</button>
 		</div>
 	</div>
