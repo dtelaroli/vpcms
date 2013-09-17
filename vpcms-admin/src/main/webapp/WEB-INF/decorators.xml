@@ -3,7 +3,6 @@
 
 	<excludes>
 		<pattern>*.tpl.html</pattern>
-		<pattern>*template/*.html</pattern>
 		<pattern>*.json</pattern>
 		<pattern>*.xml</pattern>
 	</excludes>

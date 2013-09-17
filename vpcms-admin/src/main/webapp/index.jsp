@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>Dashboard</title>
 </head>
 <body>
-<h2>Hello World!</h2>
-<a href="<c:url value="/content"/>">Content</a>
+<div class="content">
+	<h2>Hello World!</h2>
+</div>
 </body>
 </html>

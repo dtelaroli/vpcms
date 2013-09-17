@@ -7,19 +7,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<nav>
-					<ul>
-						<li>
-							<a href="<c:url value="/"/>">Home</a>
-						</li>
-						<li>
-							<a href="#!/">Grid</a>
-						</li>
-						<li>
-							<a href="#!/add">Add</a>
-						</li>
-					</ul>
-				</nav>
+				<div class="list-group">
+					<a class="list-group-item" href="#!/">Grid</a>
+					<a class="list-group-item" href="#!/add">Add</a>
+				</div>
 			</div>
 			<div class="col-md-8">
 				<div data-ng-view></div>
