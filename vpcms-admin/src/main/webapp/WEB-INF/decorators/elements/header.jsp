@@ -44,11 +44,13 @@
 				</ul>
 			</li>
 		</ul>
-		<form class="navbar-form navbar-right" data-role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
+		<form class="navbar-form navbar-right" data-role="search" data-ng-controller="SearchCtrl">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search" data-ng-model="filter">
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-default" data-ng-click="clear()">Clear</button>
+				</span>
 			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
 	<!-- /.navbar-collapse -->
