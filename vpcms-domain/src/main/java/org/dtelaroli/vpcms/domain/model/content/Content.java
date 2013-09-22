@@ -13,10 +13,13 @@ import org.dtelaroli.vpcms.domain.model.categorization.Category;
 import org.dtelaroli.vpcms.domain.model.categorization.Tag;
 import org.dtelaroli.vplus.core.model.ModelPlus;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Content extends ModelPlus {
 
 	private static final long serialVersionUID = 5226503447879244064L;

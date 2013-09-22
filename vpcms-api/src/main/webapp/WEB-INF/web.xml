@@ -11,7 +11,7 @@
 			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
-	
+
 	<filter>
 		<filter-name>vraptor</filter-name>
 		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>
@@ -37,5 +37,9 @@
 	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>
 		<param-value>org.dtelaroli.vplus,br.com.caelum.vraptor.deserialization.gson,br.com.caelum.vraptor.serialization.gson</param-value>
+	</context-param>
+	<context-param>
+		<param-name>br.com.caelum.vraptor.environment</param-name>
+		<param-value>${env}</param-value>
 	</context-param>
 </web-app>

@@ -6,7 +6,8 @@
 
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://${env.MYSQL_HOST}:3306/vplus" />
@@ -15,14 +16,26 @@
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.cache.use_minimal_puts" value="false"/>
+            <property name="hibernate.cache.use_structured_entries" value="true"/>
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+			<property name="hibernate.cache.provider_class"	value="org.hibernate.connection.C3P0ConnectionProvider" />
 			
-			<property name="hibernate.cache.provider_class" value="org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider" />
-			<property name="maxPoolSize" value="20" />
-			<property name="minPoolSize" value="3" />
-			<property name="initialPoolSize" value="3" />
-			<property name="timeout" value="25200" />
-			<property name="acquireIncrement" value="3" />
-			<property name="idleConnectionTestPeriod" value="1000" />
+			<property name="hibernate.c3p0.maxPoolSize" value="20" />
+			<property name="hibernate.c3p0.minPoolSize" value="3" />
+			<property name="hibernate.c3p0.initialPoolSize" value="3" />
+			<property name="hibernate.c3p0.aquireIncrement" value="3" />
+			<property name="hibernate.c3p0.preferredTestQuery" value="select 1" />
+			<property name="hibernate.c3p0.idleConnectionTestPeriod" value="60" />
+			<property name="hibernate.c3p0.maxStatementsPerConnection" value="50" />
+			<property name="hibernate.c3p0.maxStatements" value="0" />
+			
+			<property name="com.mchange.v2.c3p0.management.ManagementCoordinator" value="com.mchange.v2.c3p0.management.NullManagementCoordinator" />
+            <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
 		</properties>
 		
 	</persistence-unit>

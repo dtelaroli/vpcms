@@ -13,6 +13,10 @@
 
 	<name>VPlus CMS API</name>
 	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-api</url>
+	
+	<properties>
+		<env>development</env>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -33,6 +37,11 @@
 			<artifactId>vpcms-domain</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-environment</artifactId>
+			<version>1.1.4</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -50,7 +59,33 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+					<webResources>
+						<resource>
+							<directory>${basedir}/src/main/resources</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>**</include>
+							</includes>
+						</resource>
+						<resource>
+							<directory>${basedir}/src/main/webapp</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>**/web.xml</include>
+							</includes>
+						</resource>
+						<resource>
+							<directory>${basedir}/src/main/resources</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>**</include>
+							</includes>
+						</resource>
+					</webResources>
+					<webXml>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</webXml>
+					<filters>
+						<filter>${basedir}/src/main/resources/${env}.properties</filter>
+					</filters>
 				</configuration>
 			</plugin>
 		</plugins>

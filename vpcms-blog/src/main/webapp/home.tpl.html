@@ -1,20 +1,22 @@
-<h1>Blog Posts</h1>
-<div data-ng-repeat="item in $list">
-	<hr />
-	<h2>{{item.title}}</h2>
-	<div data-ng-bind-html-unsafe="item.content"></div>
-	<div class="row">
-		<div class="pull-right">
-			<a href="#!/{{item.id}}">Read more...</a>
+<div class="well well-large well-transparent">
+	<h1>Open Knowledge</h1>
+	<div data-ng-repeat="item in $list">
+		<hr />
+		<h3>{{item.title}}</h3>
+		<div data-ng-bind-html-unsafe="item.content"></div>
+		<div class="row">
+			<div class="pull-right">
+				<a href="#!/{{item.id}}">Read more...</a>
+			</div>
 		</div>
-	</div>
-	<div>
-		<span class="badge btn-success">Posted {{item.modified.time | date}}</span>
-		<div class="pull-right">
-			<span class="label label-default">alice</span>
-			<span class="label label-default">story</span>
-			<span class="label label-default">blog</span>
-			<span class="label label-default">personal</span>
+		<div>
+			<span class="label label-success">Posted {{item.modified.time | date}}</span>
+			<div class="pull-right">
+				<span class="label label-default">alice</span>
+				<span class="label label-default">story</span>
+				<span class="label label-default">blog</span>
+				<span class="label label-default">personal</span>
+			</div>
 		</div>
 	</div>
 </div>
