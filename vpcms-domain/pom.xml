@@ -9,9 +9,14 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>vpcms-domain</artifactId>
+	<packaging>jar</packaging>
 	<name>VPlus CMS Domain</name>
 	<url>https://github.com/dtelaroli/vpcms/tree/master/vpcms-domain</url>
 
+	<properties>
+		<hibernate.version>4.2.5.Final</hibernate.version>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -55,7 +60,4 @@
 		</resources>
 	</build>
 
-	<properties>
-		<hibernate.version>4.2.5.Final</hibernate.version>
-	</properties>
 </project>
