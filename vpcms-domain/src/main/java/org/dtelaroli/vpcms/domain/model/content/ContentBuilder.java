@@ -8,10 +8,10 @@ import org.dtelaroli.vpcms.domain.model.categorization.Tag;
 
 public class ContentBuilder {
 
-	private Content post;
+	private Content content;
 
 	private ContentBuilder() {
-		post = new Content();
+		content = new Content();
 	}
 
 	public static ContentBuilder content() {
@@ -19,31 +19,36 @@ public class ContentBuilder {
 	}
 
 	public Content build() {
-		return post;
+		return content;
 	}
 
 	public ContentBuilder withTitle(String title) {
-		post.setTitle(title);
+		content.setTitle(title);
 		return this;
 	}
 
 	public ContentBuilder withContent(String content) {
-		post.setContent(content);
+		this.content.setContent(content);
+		return this;
+	}
+	
+	public ContentBuilder withExcerpt(String excerpt) {
+		content.setExcerpt(excerpt);
 		return this;
 	}
 
 	public ContentBuilder withTags(Tag... tags) {
-		post.setTags(Arrays.asList(tags));
+		content.setTags(Arrays.asList(tags));
 		return this;
 	}
 
 	public ContentBuilder withCategories(Category... categories) {
-		post.setCategories(Arrays.asList(categories));
+		content.setCategories(Arrays.asList(categories));
 		return this;
 	}
 
 	public ContentBuilder withAuthors(AuthorContent... authors) {
-		post.setAuthors(Arrays.asList(authors));
+		content.setAuthors(Arrays.asList(authors));
 		return this;
 	}
 	

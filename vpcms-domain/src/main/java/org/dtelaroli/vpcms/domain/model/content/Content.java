@@ -2,6 +2,7 @@ package org.dtelaroli.vpcms.domain.model.content;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -27,6 +28,10 @@ public class Content extends ModelPlus {
 	@NotEmpty
 	@Size(max = 150)
 	private String title;
+	
+	@Column(length = 512)
+	@NotEmpty
+	private String excerpt;
 
 	@Type(type = "text")
 	@NotEmpty
@@ -56,6 +61,14 @@ public class Content extends ModelPlus {
 
 	protected void setTitle(String title) {
 		this.title = title;
+	}
+
+	protected String getExcerpt() {
+		return excerpt;
+	}
+
+	protected void setExcerpt(String excerpt) {
+		this.excerpt = excerpt;
 	}
 
 	protected String getContent() {

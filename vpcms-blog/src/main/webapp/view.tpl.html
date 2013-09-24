@@ -1,11 +1,13 @@
-<h2>{{$model.title}}</h2>
-<div data-ng-bind-html-unsafe="$model.content"></div>
-<div>
-	<span class="badge btn-success">Posted {{$model.modified.time | date}}</span>
-	<div class="pull-right">
-		<span class="label label-default">alice</span>
-		<span class="label label-default">story</span>
-		<span class="label label-default">blog</span>
-		<span class="label label-default">personal</span>
+<div class="well well-large well-transparent">
+	<h2>{{$model.title}}</h2>
+	<div data-ng-bind-html="$model.content"></div>
+	<div>
+		<span class="label btn-success">Posted {{$model.modified.time | date}}</span>
+		<div class="pull-right">
+			<span class="label label-default">alice</span>
+			<span class="label label-default">story</span>
+			<span class="label label-default">blog</span>
+			<span class="label label-default">personal</span>
+		</div>
 	</div>
 </div>

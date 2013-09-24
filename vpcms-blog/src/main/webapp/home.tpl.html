@@ -3,7 +3,7 @@
 	<div data-ng-repeat="item in $list">
 		<hr />
 		<h3>{{item.title}}</h3>
-		<div data-ng-bind-html-unsafe="item.content"></div>
+		<div data-ng-bind-html-unsafe="item.content">{{item.excerpt}}</div>
 		<div class="row">
 			<div class="pull-right">
 				<a href="#!/{{item.id}}">Read more...</a>

@@ -39,6 +39,12 @@ public class ContentBuilderTest {
 	}
 	
 	@Test
+	public void shouldSetExcerpt() {
+		Content post = builder.withExcerpt("excerpt").build();
+		assertThat(post.getExcerpt(), equalTo("excerpt"));
+	}
+	
+	@Test
 	public void shouldSetContent() {
 		Content post = builder.withContent("content").build();
 		assertThat(post.getContent(), equalTo("content"));
