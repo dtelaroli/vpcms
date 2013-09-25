@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<Category id="1" name="João" created="2013-01-01 00:00:00" modified="2013-01-01 00:00:00" status="1"/>
+	<Category id="2" name="Pedro" created="2013-01-01 00:00:00" modified="2013-01-01 00:00:00" status="1"/>
+	<Category id="3" name="Ana" created="2013-01-01 00:00:00" modified="2013-01-01 00:00:00" status="1"/>
+</dataset>

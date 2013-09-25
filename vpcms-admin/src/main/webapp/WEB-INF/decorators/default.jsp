@@ -11,7 +11,6 @@
 <body data-ng-app="myApp">
 	<header>
 		<jsp:include page="./elements/header.jsp"></jsp:include>
-		<jsp:include page="./elements/menu.jsp"></jsp:include>
 	</header>
 	
 	<section>

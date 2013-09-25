@@ -17,10 +17,10 @@
 				<a href="<c:url value="/content"/>">Contents</a>
 			</li>
 			<li>
-				<a href="<c:url value="/author"/>">Authors</a>
+				<a href="<c:url value="/category"/>">Categories</a>
 			</li>
 			<li>
-				<a href="<c:url value="/author"/>">Categories</a>
+				<a href="<c:url value="/author"/>">Authors</a>
 			</li>
 			<li>
 				<a href="<c:url value="/author"/>">Tags</a>

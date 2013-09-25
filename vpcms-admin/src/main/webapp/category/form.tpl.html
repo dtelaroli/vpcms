@@ -1,0 +1,28 @@
+<form class="form-horizontal" action="" data-ng-submit="persist()" novalidate="novalidate" data-ng-controller="CategoryEditCtrl">
+
+	<div class="form-group">
+		<label for="name" class="control-label col-lg-2">Name</label>
+		<div class="col-lg-10">
+			<input id="name" type="text" placeholder="Name" class="form-control" data-ng-model="$model.name" />
+		</div>
+	</div>
+	<!-- /.form-group -->
+	
+	<div class="form-group">
+		<label for="name" class="control-label col-lg-2">Parent</label>
+		<div class="col-lg-10">
+			<select data-ng-model="$model.parent.id" data-ng-options="item.id as item.name for item in $categories">
+				<option value=""></option>
+			</select>
+		</div>
+	</div>
+	<!-- /.form-group -->
+	
+	<div class="form-group">
+		<span class="col-lg-2"></span>
+		<div class="form-actions no-margin-bottom col-lg-10">
+			<button class="btn btn-primary" type="submit">Save</button>
+		</div>
+	</div>
+	<!-- /.form-group -->
+</form>

@@ -5,6 +5,8 @@ import br.com.caelum.vraptor.http.route.Router;
 import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 
+import com.google.common.base.Strings;
+
 @Component
 @ApplicationScoped
 public class CustomPathAnnotationRoutesParser extends PathAnnotationRoutesParser {
@@ -17,7 +19,19 @@ public class CustomPathAnnotationRoutesParser extends PathAnnotationRoutesParser
 
 	@Override
 	protected String extractPrefix(Class<?> type) {
-		return API_V1 + super.extractPrefix(type);
+		String extractPrefix = super.extractPrefix(type);
+		if(Strings.isNullOrEmpty(extractPrefix)) {
+			return API_V1 + controllerName(type);
+		}
+		return API_V1 + extractPrefix;
+	}
+
+	private String controllerName(Class<?> type) {
+		String baseName = lowerFirstCharacter(type.getSimpleName());
+		if (baseName.endsWith("Controller")) {
+			return "/" + baseName.substring(0, baseName.lastIndexOf("Controller"));
+		}
+		return "/" + baseName;
 	}
 	
 }
