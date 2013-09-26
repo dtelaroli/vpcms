@@ -1,9 +1,22 @@
-<form class="form-horizontal" action="" data-ng-submit="persist()" novalidate="novalidate">
+<form class="form-horizontal" data-ng-controller="CategoryEditCtrl" data-ng-submit="persist()" novalidate="novalidate">
 
 	<div class="form-group">
 		<label for="title" class="control-label col-lg-2">Title</label>
 		<div class="col-lg-10">
-			<input id="title" type="text" placeholder="Title" class="form-control" data-ng-model="$model.title" />
+			<input id="title" type="text" placeholder="Title" class="form-control" data-ng-model="$parent.$model.title" />
+		</div>
+	</div>
+	<!-- /.form-group -->
+	
+	<div class="form-group">
+		<label for="title" class="control-label col-lg-2">Categories</label>
+		<div class="col-lg-10">
+			<ul class="list-group">
+				<li data-ng-repeat="cat in categories">
+					<input type="checkbox" data-ng-model="cat.checked"/>
+					<label>{{cat.name}}</label>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<!-- /.form-group -->
@@ -11,7 +24,7 @@
 	<div class="form-group">
 		<label for="excerpt" class="control-label col-lg-2">Excerpt</label>
 		<div class="col-lg-10">
-			<textarea id="excerpt" data-ng-model="$model.excerpt" class="form-control" rows="3"></textarea>
+			<textarea id="excerpt" data-ng-model="$parent.$model.excerpt" class="form-control" rows="3"></textarea>
 		</div>
 	</div>
 	<!-- /.form-group -->
@@ -19,7 +32,7 @@
 	<div class="form-group">
 		<label for="content" class="control-label col-lg-2">Content</label>
 		<div class="col-lg-10">
-			<textarea id="content" ck-editor data-ng-model="$model.content" class="form-control"></textarea>
+			<textarea id="content" ck-editor data-ng-model="$parent.$model.content" class="form-control"></textarea>
 		</div>
 	</div>
 	<!-- /.form-group -->

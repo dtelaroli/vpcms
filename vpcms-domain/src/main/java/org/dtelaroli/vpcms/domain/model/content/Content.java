@@ -28,7 +28,7 @@ public class Content extends ModelPlus {
 	@NotEmpty
 	@Size(max = 150)
 	private String title;
-	
+
 	@Column(length = 512)
 	@NotEmpty
 	private String excerpt;
@@ -41,12 +41,12 @@ public class Content extends ModelPlus {
 	@BatchSize(size = 10)
 	@Size(min = 1)
 	private Collection<Tag> tags;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@BatchSize(size = 5)
 	@Size(min = 1)
 	private Collection<Category> categories;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "content")
 	@BatchSize(size = 5)
 	@Size(min = 1)
@@ -102,5 +102,10 @@ public class Content extends ModelPlus {
 	protected void setAuthors(Collection<AuthorContent> authors) {
 		this.authors = authors;
 	}
-	
+
+	@Override
+	public String[] includes() {
+		return new String[] { "categories" };
+	}
+
 }

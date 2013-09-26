@@ -6,6 +6,6 @@
 <script src="/vp-static/lib/ckeditor/ckeditor.js" type="text/javascript"></script>
 <script src="/vp-static/lib/angular/angular.js" type="text/javascript"></script>
 <script src="/vp-static/lib/angular/angular-route.js" type="text/javascript"></script>
-<script src="/vp-static/js/vplus.min.js" type="text/javascript"></script>
+<script src="/vp-static/js/vplus.js" type="text/javascript"></script>
 
 <vp:js value="main.js"/>
