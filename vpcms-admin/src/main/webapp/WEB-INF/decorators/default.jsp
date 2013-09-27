@@ -8,7 +8,7 @@
 <jsp:include page="./elements/head.jsp"></jsp:include>
 <decorator:head />
 </head>
-<body data-ng-app="myApp">
+<body data-ng-app="myApp" class="admin">
 	<header>
 		<jsp:include page="./elements/header.jsp"></jsp:include>
 	</header>

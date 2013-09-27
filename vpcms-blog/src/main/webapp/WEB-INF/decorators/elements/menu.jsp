@@ -3,7 +3,7 @@
 	<hr />
 	<p>
 		Software Livre é uma questão de liberdade, não de preço.
-		<a href="http://bit.ly/opvLwn">http://bit.ly/opvLwn</a>
+		<a href="http://bit.ly/opvLwn" data-vp-blank>http://bit.ly/opvLwn</a>
 	</p>
 	<h4></h4>
 	<ul class="nav nav-pills nav-stacked">
