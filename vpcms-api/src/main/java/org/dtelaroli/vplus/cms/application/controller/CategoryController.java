@@ -16,10 +16,10 @@ public class CategoryController extends Scaffold<Category> {
 		super(crud);
 	}
 	
-	@Get("/{category.id}/list-exclude.json")
-	public void findExclude(Category category) throws CrudException {
+	@Get("/{model.id}/list-exclude.json")
+	public void findExclude(Category model) throws CrudException {
 		ActionListCategoryExclude action = (ActionListCategoryExclude) crud().use(ActionListCategoryExclude.class);
-		action.withModel(category).render();	
+		action.withModel(model).render();	
 	}
 
 }
