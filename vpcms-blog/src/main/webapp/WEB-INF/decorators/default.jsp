@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="fragment" content="!" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title><decorator:title /> - VPls CMS</title>
+<title><decorator:title /> - VPlus CMS</title>
 <jsp:include page="./elements/head.jsp"></jsp:include>
 <decorator:head />
 </head>

@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('myApp').constant('REST_URL', '/vp-api/v1/content').config(
+angular.module('myApp').constant('URL', '/vp-api/v1/content').config(
 	[ '$routeProvider', routes ])
 
 .controller('CategoryEditCtrl',
 	[ '$scope', '$restService', function($scope, $rest) {
 
-	    $rest.$delegate('/vp-api/v1/category').query(function(result) {
+	    $rest('/vp-api/v1/category').query(function(result) {
 		$scope.categories = result;
 
 		$scope.$watch('$parent.$model.categories', function(val) {

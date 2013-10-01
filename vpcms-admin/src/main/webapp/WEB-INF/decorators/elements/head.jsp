@@ -1,1 +1,1 @@
-<link href="/vp-static/css/vplus.min.css" rel="stylesheet" />
+<link href="/vp-static/css/vplus.css" rel="stylesheet" />

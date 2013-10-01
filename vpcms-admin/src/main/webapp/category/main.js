@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp').constant('REST_URL', '/vp-api/v1/category').config(
+angular.module('myApp').constant('URL', '/vp-api/v1/category').config(
 	[ '$routeProvider', routes ])
 
 .controller(
@@ -8,11 +8,11 @@ angular.module('myApp').constant('REST_URL', '/vp-api/v1/category').config(
 	[ '$scope', '$restService', '$routeParams',
 		function($scope, $rest, $routeParams) {
 		    if ($routeParams.id === undefined) {
-			$rest.$delegate().query(function(result) {
+			$rest().query(function(result) {
 			    $scope.$categories = result;
 			});
 		    } else {
-			$rest.$delegate().query({
+			$rest().query({
 			    id : $routeParams.id,
 			    action : 'list-exclude.json'
 			}, function(result) {
