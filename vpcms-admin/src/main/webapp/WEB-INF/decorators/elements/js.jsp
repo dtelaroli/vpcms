@@ -8,6 +8,8 @@
 <script src="/vp-static/lib/angular/angular.js" type="text/javascript"></script>
 <script src="/vp-static/lib/angular/angular-route.js" type="text/javascript"></script>
 <script src="/vp-static/lib/angular/angular-resource.js" type="text/javascript"></script>
+<script src="/vp-static/lib/angulartics/angulartics.min.js" type="text/javascript"></script>
+<script src="/vp-static/lib/angulartics/angulartics-google-analytics.min.js" type="text/javascript"></script>
 <script src="/vp-static/lib/ng-table/ng-table.js" type="text/javascript"></script>
 <script src="/vp-static/lib/ui-bootstrap/ui-bootstrap-tpls-0.5.0.js" type="text/javascript"></script>
 

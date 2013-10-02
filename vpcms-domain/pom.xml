@@ -61,7 +61,10 @@
 	</dependencies>
 
 	<build>
+		<finalName>vpcms-domain</finalName>
 		<resources>
+			<resource><directory>src/main/java</directory></resource>
+			<resource><directory>src/main/webapp</directory></resource>
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 				<filtering>true</filtering>
@@ -69,6 +72,8 @@
 					<include>**</include>
 				</includes>
 			</resource>
+			<resource><directory>src/test/java</directory></resource>
+			<resource><directory>src/test/resources</directory></resource>
 		</resources>
 	</build>
 
